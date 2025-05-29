@@ -1,7 +1,8 @@
 import 'dart:async';
 
+import 'package:flame/components.dart';
 import 'package:flame/game.dart';
-import 'package:flame/sprite.dart';
+import 'package:flame/palette.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:long_game/component.dart';
@@ -12,6 +13,8 @@ void main() {
 }
 
 class LongGame extends FlameGame {
+  late final JoystickComponent joystick;
+
   @override
   Future<void> onLoad() async {
     String src = 'bonus_animation/dash_nest.png';
@@ -29,5 +32,14 @@ class LongGame extends FlameGame {
       ),
     );
     await add(DashComponent(animation: animation, size: Vector2(100, 37)));
+
+    final knobPaint = BasicPalette.blue.withAlpha(200).paint();
+    final backgroundPaint = BasicPalette.blue.withAlpha(100).paint();
+    joystick = JoystickComponent(
+      knob: CircleComponent(radius: 25, paint: knobPaint),
+      background: CircleComponent(radius: 60, paint: backgroundPaint),
+      margin: const EdgeInsets.only(left: 40, bottom: 40),
+    );
+    add(joystick);
   }
 }
