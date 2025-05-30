@@ -4,7 +4,7 @@ import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame/palette.dart';
 import 'package:flutter/material.dart';
-import 'package:long_game/component.dart';
+import 'package:long_game/dash_component.dart';
 
 class LongGame extends FlameGame {
   late final JoystickComponent joystick;
